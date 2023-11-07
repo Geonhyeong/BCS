@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .card-style {
+    @apply w-[290px] h-[400px] rounded-3xl flex justify-center items-center text-white shadow-2xl;
+  }
+}
