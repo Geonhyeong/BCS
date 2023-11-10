@@ -52,8 +52,6 @@ const weatherIcon = {
 };
 
 const App = () => {
-  const API_KEY = "b57ac70f25ab59226ce7c2894fde637b";
-
   const [weatherData, setWeatherData] = useState();
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
@@ -67,7 +65,7 @@ const App = () => {
 
   const getWeather = async () => {
     const response = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
     );
 
     setWeatherData(response.data);
