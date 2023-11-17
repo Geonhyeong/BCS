@@ -32,21 +32,15 @@ const bannerData = [
 
 const Banner = () => {
   const sliderRef = useRef();
+  const [page, setPage] = useState(0);
 
   useEffect(() => {
-    // const timer = setInterval(() => {
-    //   console.log(sliderRef.current.innerSlider.state.currentSlide);
-    // }, 1000);
-    // return () => clearInterval(timer);
+    const timer = setInterval(() => {
+      setPage(sliderRef.current.innerSlider.state.currentSlide);
+    }, 1000);
+
+    return () => clearInterval(timer);
   }, []);
-
-  const onClickPrev = () => {
-    sliderRef.current.slickPrev();
-  };
-
-  const onClickNext = () => {
-    sliderRef.current.slickNext();
-  };
 
   return (
     <div>
@@ -56,6 +50,7 @@ const Banner = () => {
           arrows={false}
           autoplay={true}
           autoplaySpeed={5000}
+          fade={true}
         >
           {bannerData.map((v, i) => {
             return (
@@ -64,16 +59,15 @@ const Banner = () => {
                 title={v.title}
                 desc={v.desc}
                 image={v.image}
+                page={page}
+                setPage={setPage}
+                sliderRef={sliderRef}
+                length={bannerData.length}
               />
             );
           })}
         </Slider>
       </ul>
-      <div className="inline-block rounded-xl p-2 bg-gray-400 text-xs text-white">
-        <span></span>
-        <button onClick={onClickPrev}>Prev</button>
-        <button onClick={onClickNext}>Next</button>
-      </div>
     </div>
   );
 };
