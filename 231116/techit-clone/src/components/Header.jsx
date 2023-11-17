@@ -2,7 +2,7 @@ import EllipsisIcon from "../icons/EllipsisIcon";
 
 const Header = () => {
   return (
-    <header className="bg-white h-16 border-b sticky top-0">
+    <header className="bg-white h-16 border-b sticky top-0 z-10">
       <div className="max-w-screen-xl mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <div className="h-16 p-6">
